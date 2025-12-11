@@ -24,7 +24,7 @@ function startProject() {
 	const child = spawn("node", ["Goat.js"], {
 		cwd: __dirname,
 		stdio: "inherit",
-		shell: true
+		shell: false
 	});
 
 	child.on("close", (code) => {
