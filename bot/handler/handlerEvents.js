@@ -312,7 +312,7 @@ module.exports = function (api, threadModel, userModel, dashBoardModel, globalMo
 
 				createMessageSyntaxError(commandName);
 				const getText2 = createGetText2(langCode, `${process.cwd()}/languages/cmds/${langCode}.js`, prefix, command);
-				await (command.onStart ?? command.run)?.({ ...parameters, args, commandName, getLang: getText2, removeCommandNameFromBody });
+				await (command.onStart ?? command.run)?.call(command, { ...parameters, args, commandName, getLang: getText2, removeCommandNameFromBody });
 				timestamps[senderID] = dateNow;
 				log.info("CALL COMMAND", `${commandName} | ${userData.name} | ${senderID} | ${threadID} | ${args.join(" ")}`);
 			}
